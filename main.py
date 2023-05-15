@@ -144,7 +144,8 @@ while True:
         print(Fore.WHITE + "hangman: A game to play when your taking a break")
         print(Fore.WHITE + "file_info: finds information about a file")
         print(Fore.WHITE + "dweb: downloads files from the internet")
-        print(Fore.White + "imgoptf: enchances image quality")
+        print(Fore.WHITE + "imgoptf: enchances image quality")
+        print(Fore.WHITE + "math:evaluates math sum")
 
     elif cmd == "exit":
         exit()
