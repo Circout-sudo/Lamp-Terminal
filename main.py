@@ -12,7 +12,7 @@ import calendar
 import datetime
 from win32api import *
 import urllib.request
-
+from PIL import Image, ImageEnhance, ImageOps, ImageFilter
 os.system('cls')
 today = datetime.datetime.now()
 yy =  today.year
@@ -144,8 +144,7 @@ while True:
         print(Fore.WHITE + "hangman: A game to play when your taking a break")
         print(Fore.WHITE + "file_info: finds information about a file")
         print(Fore.WHITE + "dweb: downloads files from the internet")
-        print(Fore.WHITE + "imgoptf: enchances image quality")
-        print(Fore.WHITE + "math:evaluates math sum")
+        print(Fore.White + "imgoptf: enchances image quality")
 
     elif cmd == "exit":
         exit()
@@ -297,7 +296,21 @@ while True:
             print( Fore.RED + "Error:", e)
 
     elif cmd == "imgoptf":
-        imgapp = os.startfile("imgapp.bat")
+        x = input("Path to file:")
+
+        # Converting to RGB mode
+        im = Image.open(x)
+        im = im.convert('RGB')
+
+        # Compressing
+        im.save("Image1.jpg", optimize=True, quality=90)
+
+        # Sharpening
+        im = Image.open(x)
+        im = im.filter(ImageFilter.SHARPEN)
+        # Saving
+        im.save(x)
+
 
     elif cmd == "math":
         try:
