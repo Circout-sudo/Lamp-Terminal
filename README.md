@@ -5,7 +5,8 @@ Lamp Terminal is a sleek and user-friendly command-line interface for windows cr
 
 ## Contents
 1. How to run and install Lamp Terminal?
-2. Credits
+2. Requirements
+3. Credits
 
 ## How to run and install Lamp Terminal?
 1. Open Git Terminal
@@ -15,6 +16,11 @@ Lamp Terminal is a sleek and user-friendly command-line interface for windows cr
 5. Type cd Lamp-Terminal
 6. Type python main.py
 7. Voila, Lamp-Terminal is ready to use!
+
+## Requirements
+- Windows operating system.
+- Lamp Terminal will work if you have python installed.
+- The windows terminal app(not cmd or powershell), here is its installation page https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701.
 
 ## Credits
 - Techemmy, I used his code for my `file_tree` command which generates a file tree.
