@@ -12,7 +12,8 @@ import calendar
 import datetime
 from win32api import *
 import urllib.request
-from PIL import Image, ImageEnhance, ImageOps, ImageFilter
+from PIL import Image, ImageFilter
+from decimal import Decimal
 os.system('cls')
 today = datetime.datetime.now()
 yy =  today.year
@@ -144,7 +145,9 @@ while True:
         print(Fore.WHITE + "hangman: A game to play when your taking a break")
         print(Fore.WHITE + "file_info: finds information about a file")
         print(Fore.WHITE + "dweb: downloads files from the internet")
-        print(Fore.White + "imgoptf: enchances image quality")
+        print(Fore.WHITE + "imgoptf: enchances image quality")
+        print(Fore.WHITE + "math: does math")
+        print(Fore.WHITE + "Allows you to execute python file withing terminal")
 
     elif cmd == "exit":
         exit()
@@ -157,11 +160,17 @@ while True:
         print(Fore.WHITE + "new file created")
 
     elif cmd == "del":
-        removefile = input(Fore.BLUE + "Enter the file you want to delete:")
-        if os.path.exists(removefile):
-            os.remove(removefile)
-            print(Fore.WHITE + "File deleted")
+        try:
+            removefile = input(Fore.BLUE + "Enter the file you want to delete: ")
 
+            if os.path.exists(removefile):
+                os.remove(removefile)
+                print(Fore.WHITE + "File deleted")
+            else:
+                print(Fore.RED + "File does not exist")
+
+        except Exception as e:
+            print("An error occurred:", str(e))
 
     elif cmd =="tasklist":
         output = os.popen('wmic process get description, processid').read()
@@ -296,20 +305,27 @@ while True:
             print( Fore.RED + "Error:", e)
 
     elif cmd == "imgoptf":
-        x = input("Path to file:")
+        try:
+            x = input("Path to file: ")
 
-        # Converting to RGB mode
-        im = Image.open(x)
-        im = im.convert('RGB')
+            # Converting to RGB mode
+            im = Image.open(x)
+            im = im.convert('RGB')
 
-        # Compressing
-        im.save("Image1.jpg", optimize=True, quality=90)
+            # Compressing
+            im.save("Image1.jpg", optimize=True, quality=90)
 
-        # Sharpening
-        im = Image.open(x)
-        im = im.filter(ImageFilter.SHARPEN)
-        # Saving
-        im.save(x)
+            # Sharpening
+            im = Image.open(x)
+            im = im.filter(ImageFilter.SHARPEN)
+
+            # Saving
+            im.save(x)
+
+            print("Image processing completed successfully!")
+
+        except Exception as e:
+            print(Fore.RED + "Error:", e)
 
 
     elif cmd == "math":
@@ -323,6 +339,30 @@ while True:
             print(Fore.RED + "Invalid input. Division by zero is not allowed.")
         except TypeError:
             print(Fore.RED +"Invalid input. Please enter a valid mathematical expression.")
+        except SyntaxError:
+            print(Fore.RED + "Incorrect Syntax")
+        except Exception as e:
+            print( Fore.RED + "Error:", e)
+
+    elif cmd == "python":
+        try:
+            python_file_path = input("Path to python file: ")
+
+            process = subprocess.Popen(["python", python_file_path], stdout=subprocess.PIPE)
+
+            # Get the output and error streams of the subprocess
+            output, error = process.communicate()
+
+            # Check if an error occurred during execution
+            if error:
+                raise Exception(error.decode())
+
+            # Print the output
+            print(output.decode())
+
+        except Exception as e:
+            print(Fore.RED + "Error:", e)
+
 
 
 
