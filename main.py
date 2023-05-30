@@ -147,7 +147,7 @@ while True:
         print(Fore.WHITE + "dweb: downloads files from the internet")
         print(Fore.WHITE + "imgoptf: enchances image quality")
         print(Fore.WHITE + "math: does math")
-        print(Fore.WHITE + "Allows you to execute python file withing terminal")
+        print(Fore.WHITE + "python:Allows you to execute python file withing terminal")
 
     elif cmd == "exit":
         exit()
