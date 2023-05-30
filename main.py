@@ -148,6 +148,7 @@ while True:
         print(Fore.WHITE + "imgoptf: enchances image quality")
         print(Fore.WHITE + "math: does math")
         print(Fore.WHITE + "python:Allows you to execute python file withing terminal")
+        print(Fore.WHITE + "stoptask: stops a running process or application")
 
     elif cmd == "exit":
         exit()
@@ -259,7 +260,7 @@ while True:
         print(Fore.WHITE + calendar.month(yy,mm))
 
     elif cmd == "search":
-        rootDir = input("Path of the file you want to search")
+        rootDir = input(Fore.BLUE + "Path of the file you want to search")
         fileToSearch = input("Name of the file")
         for relpath,dirs,files in os.walk(rootDir):  #loop for finding file
             if(fileToSearch in files):
@@ -289,8 +290,8 @@ while True:
 
     elif cmd == "dweb":
         try:
-            url = input("Enter the URL of the file you want to download: ")
-            filename = input("Enter the filename you want to save the file as: ")
+            url = input( Fore.BLUE + "Enter the URL of the file you want to download: ")
+            filename = input(Fore.BLUE + "Enter the filename you want to save the file as: ")
 
             urllib.request.urlretrieve(url, filename)
             print("File Saved")
@@ -306,7 +307,7 @@ while True:
 
     elif cmd == "imgoptf":
         try:
-            x = input("Path to file: ")
+            x = input(Fore.BLUE + "Path to file: ")
 
             # Converting to RGB mode
             im = Image.open(x)
@@ -330,7 +331,7 @@ while True:
 
     elif cmd == "math":
         try:
-            mathv = input("Enter math sum: ")
+            mathv = input(Fore.BLUE + "Enter math sum: ")
             result = eval(mathv)
             print(result)
         except NameError:
@@ -346,7 +347,7 @@ while True:
 
     elif cmd == "python":
         try:
-            python_file_path = input("Path to python file: ")
+            python_file_path = input(Fore.BLUE + "Path to python file: ")
 
             process = subprocess.Popen(["python", python_file_path], stdout=subprocess.PIPE)
 
@@ -363,7 +364,13 @@ while True:
         except Exception as e:
             print(Fore.RED + "Error:", e)
 
-
+    elif cmd == "stoptask":
+        try:
+            process_name = input(Fore.BLUE + "Enter process:")
+            subprocess.run(['taskkill', '/F', '/IM', process_name], check=True)
+            print(f"Successfully killed the process '{process_name}'.")
+        except subprocess.CalledProcessError:
+            print(f"Failed to kill the process '{process_name}'.")
 
 
     else:
