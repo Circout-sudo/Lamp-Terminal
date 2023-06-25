@@ -171,7 +171,7 @@ while True:
                 print(Fore.RED + "File does not exist")
 
         except Exception as e:
-            print("An error occurred:", str(e))
+            print(Fore.RED + "An error occurred:", str(e))
 
     elif cmd =="tasklist":
         output = os.popen('wmic process get description, processid').read()
@@ -189,9 +189,9 @@ while True:
                     tofile=y, lineterm=''):
                 print(Fore.WHITE + line)
         except FileNotFoundError as e:
-            print(f"Error: {e.filename} not found")
+            print(Fore.RED + f"Error: {e.filename} not found")
         except Exception as e:
-            print(f"Error: {str(e)}")
+            print(Fore.RED + f"Error: {str(e)}")
 
     elif cmd == "file_tree":
         def generate_directory(
@@ -268,7 +268,7 @@ while True:
                 print(Fore.WHITE + fullPath)
             else:
                 print("                                ")
-                print(Fore.WHITE + "Could not find file")
+                print(Fore.RED + "Could not find file")
                 break
 
     elif cmd == "clr":
@@ -370,7 +370,8 @@ while True:
             subprocess.run(['taskkill', '/F', '/IM', process_name], check=True)
             print(f"Successfully killed the process '{process_name}'.")
         except subprocess.CalledProcessError:
-            print(f"Failed to kill the process '{process_name}'.")
+            print(Fore.RED + f"Failed to kill the process '{process_name}'.")
+
 
 
     else:
