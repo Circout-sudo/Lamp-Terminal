@@ -1,7 +1,7 @@
 # Lamp-Terminal
 
 ## Project Description
-Lamp Terminal is a sleek and user-friendly command-line interface for windows created with simplicity and ease of use in mind. It offers a seamless and trouble-free experience, allowing users to operate swiftly and effectively. It is the go-to choice for begginers looking for a lightweight and accessible terminal environment.
+Lamp Terminal is a sleek and user-friendly command-line interface for windows and mac created with simplicity and ease of use in mind. It offers a seamless and trouble-free experience, allowing users to operate swiftly and effectively. It is the go-to choice for begginers looking for a lightweight and accessible terminal environment.
 
 ## Contents
 1. How to run and install Lamp Terminal?
